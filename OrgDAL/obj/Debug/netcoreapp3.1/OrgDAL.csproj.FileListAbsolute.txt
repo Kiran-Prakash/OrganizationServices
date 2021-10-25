@@ -1,0 +1,13 @@
+C:\Users\prakaski\source\repos\OrganisationServices\OrgDAL\bin\Debug\netcoreapp3.1\OrgDAL.deps.json
+C:\Users\prakaski\source\repos\OrganisationServices\OrgDAL\bin\Debug\netcoreapp3.1\OrgDAL.runtimeconfig.json
+C:\Users\prakaski\source\repos\OrganisationServices\OrgDAL\bin\Debug\netcoreapp3.1\OrgDAL.runtimeconfig.dev.json
+C:\Users\prakaski\source\repos\OrganisationServices\OrgDAL\bin\Debug\netcoreapp3.1\OrgDAL.dll
+C:\Users\prakaski\source\repos\OrganisationServices\OrgDAL\bin\Debug\netcoreapp3.1\OrgDAL.pdb
+C:\Users\prakaski\source\repos\OrganisationServices\OrgDAL\obj\Debug\netcoreapp3.1\OrgDAL.AssemblyInfoInputs.cache
+C:\Users\prakaski\source\repos\OrganisationServices\OrgDAL\obj\Debug\netcoreapp3.1\OrgDAL.AssemblyInfo.cs
+C:\Users\prakaski\source\repos\OrganisationServices\OrgDAL\obj\Debug\netcoreapp3.1\OrgDAL.csproj.CoreCompileInputs.cache
+C:\Users\prakaski\source\repos\OrganisationServices\OrgDAL\obj\Debug\netcoreapp3.1\OrgDAL.dll
+C:\Users\prakaski\source\repos\OrganisationServices\OrgDAL\obj\Debug\netcoreapp3.1\OrgDAL.pdb
+C:\Users\prakaski\source\repos\OrganisationServices\OrgDAL\obj\Debug\netcoreapp3.1\OrgDAL.genruntimeconfig.cache
+C:\Users\prakaski\source\repos\OrganisationServices\OrgDAL\obj\Debug\netcoreapp3.1\OrgDAL.csproj.AssemblyReference.cache
+C:\Users\prakaski\source\repos\OrganisationServices\OrgDAL\obj\Debug\netcoreapp3.1\OrgDAL.GeneratedMSBuildEditorConfig.editorconfig
