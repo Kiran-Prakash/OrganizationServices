@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
@@ -10,22 +11,24 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using OrgDAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace OrgAPI
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+        //public Startup(IConfiguration configuration)
+        //{
+        //    Configuration = configuration;
+        //}
 
-        public IConfiguration Configuration { get; }
+        //public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -41,25 +44,44 @@ namespace OrgAPI
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<OrganizationDbContext>()
                 .AddDefaultTokenProviders();
-            services.ConfigureApplicationCookie(opt =>
+            var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("this-is-my-secret-key"));
+            var tokenValidationParameter = new TokenValidationParameters()
             {
-                opt.ExpireTimeSpan = new TimeSpan(0, 30, 30);
-                opt.Events = new CookieAuthenticationEvents
-                {
+                IssuerSigningKey = signingKey,
+                ValidateIssuer = false,
+                ValidateAudience = false,
+                //ValidateLifetime=false,
+                //ClockSkew=TimeSpan.Zero
+            };
 
-                    OnRedirectToLogin = redirectContext =>
+
+            services.AddAuthentication(x => x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme)
+                    .AddJwtBearer(jwt =>
                     {
-                        redirectContext.HttpContext.Response.StatusCode = 401;
-                        return Task.CompletedTask;
-                    },
-                    OnRedirectToAccessDenied = redirectContext =>
-                    {
-                        redirectContext.HttpContext.Response.StatusCode = 401;
-                        return Task.CompletedTask;
+                        //jwt.SaveToken = true;
+                        //jwt.RequireHttpsMetadata = true;
+                        jwt.TokenValidationParameters = tokenValidationParameter;
                     }
-                };
+                    );
+            //services.ConfigureApplicationCookie(opt =>
+            //{
+            //    opt.ExpireTimeSpan = new TimeSpan(0, 30, 30);
+            //    opt.Events = new CookieAuthenticationEvents
+            //    {
 
-            });
+            //        OnRedirectToLogin = redirectContext =>
+            //        {
+            //            redirectContext.HttpContext.Response.StatusCode = 401;
+            //            return Task.CompletedTask;
+            //        },
+            //        OnRedirectToAccessDenied = redirectContext =>
+            //        {
+            //            redirectContext.HttpContext.Response.StatusCode = 401;
+            //            return Task.CompletedTask;
+            //        }
+            //    };
+
+            //});
         }
 
 
